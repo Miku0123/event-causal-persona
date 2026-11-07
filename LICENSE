@@ -1,0 +1,38 @@
+Event-Causal Persona Inversion — Documentation License
+=======================================================
+
+Copyright (c) 2026 the project authors.
+
+The written materials in this repository (README, design documents, and papers)
+are licensed under the **Creative Commons Attribution 4.0 International
+License (CC BY 4.0)**.
+
+  Full license text : https://creativecommons.org/licenses/by/4.0/legalcode
+  Summary           : https://creativecommons.org/licenses/by/4.0/
+
+You are free to share (copy and redistribute in any medium or format) and to
+adapt (remix, transform, and build upon) the material for any purpose, even
+commercially, provided that you:
+
+  - give appropriate credit to the project and its authors;
+  - provide a link to the license; and
+  - indicate if changes were made.
+
+You may do so in any reasonable manner, but not in any way that suggests the
+licensor endorses you or your use.
+
+Name reservation
+----------------
+The project name "Event-Causal Persona Inversion" and its Chinese name
+"因果事件人格体系" are NOT covered by this license. Modified versions and
+derivative works must not be presented as the official project, and must not
+imply endorsement by its authors.
+
+Implementation code
+-------------------
+Source code will be released separately (see the README, "后续会开源什么").
+Its license will be announced at that time; the intent is a permissive
+license (MIT-style).
+
+Model weights, training corpora, and any real conversation content are not
+released and are not covered by this license.

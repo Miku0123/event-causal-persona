@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>architecture</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1800px; height: 1100px; background: #FFFFFF; }
+  body { font-family: "Microsoft YaHei", "Segoe UI", sans-serif; color: #24292F; }
+  .canvas { position: relative; width: 1800px; height: 1100px; }
+  .lines { position: absolute; inset: 0; }
+  .card { position: absolute; background: #FFFFFF; border: 1.6px solid #D0D7DE; border-radius: 14px; }
+  .card.main { box-shadow: 0 1px 0 rgba(14,39,64,.04); }
+  .t { font-size: 22px; font-weight: 700; color: #0E2740; letter-spacing: .2px; }
+  .d { font-size: 16px; color: #57606A; line-height: 1.42; }
+  .pad { padding: 16px 22px; }
+  .tag { position: absolute; font-size: 14px; color: #57606A; background: #FFFFFF; padding: 2px 9px; border-radius: 999px; border: 1px solid #E4E8EC; white-space: nowrap; }
+  .pill { display: inline-block; font-size: 13.5px; color: #0E2740; background: #EEF3F8; border: 1px solid #D8E2EC; border-radius: 999px; padding: 2px 10px; margin-right: 6px; }
+  .band { position: absolute; background: #F6F8FA; border: 1.6px solid #D8DEE4; border-radius: 14px; }
+  .side { position: absolute; background: #F6F8FA; border: 1.6px dashed #C6CDD5; border-radius: 14px; }
+  .core { position: absolute; background: #FFFFFF; border: 1.5px solid #D0D7DE; border-radius: 10px; }
+  .core .ct { font-size: 17px; font-weight: 700; color: #0E2740; }
+  .core .cd { font-size: 14.5px; color: #57606A; line-height: 1.35; margin-top: 4px; }
+  .num { display:inline-block; width: 22px; height: 22px; line-height: 22px; text-align:center; border-radius: 6px; background:#0E2740; color:#fff; font-size:13px; font-weight:700; margin-right:8px; }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <svg class="lines" width="1800" height="1100" viewBox="0 0 1800 1100">
+    <defs>
+      <marker id="ah" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto">
+        <path d="M0,0 L10,4 L0,8 Z" fill="#0E2740"/>
+      </marker>
+      <marker id="ah2" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto">
+        <path d="M0,0 L10,4 L0,8 Z" fill="#8B949E"/>
+      </marker>
+    </defs>
+    <path d="M570,126 L570,178" stroke="#0E2740" stroke-width="3" fill="none" marker-end="url(#ah)"/>
+    <path d="M570,300 L570,338" stroke="#0E2740" stroke-width="3" fill="none" marker-end="url(#ah)"/>
+    <path d="M570,490 L570,528" stroke="#0E2740" stroke-width="3" fill="none" marker-end="url(#ah)"/>
+    <path d="M570,630 L570,668" stroke="#0E2740" stroke-width="3" fill="none" marker-end="url(#ah)"/>
+    <path d="M1455,126 L1455,178" stroke="#8B949E" stroke-width="2" stroke-dasharray="6 5" fill="none" marker-end="url(#ah2)"/>
+    <path d="M1180,580 L1076,580" stroke="#8B949E" stroke-width="2" stroke-dasharray="6 5" fill="none" marker-end="url(#ah2)"/>
+  </svg>
+
+  <div class="band" style="left:70px; top:50px; width:1660px; height:76px;">
+    <div class="pad" style="display:flex; align-items:center; gap:26px;">
+      <div class="t">输入</div>
+      <div class="d">一句话 &nbsp;/&nbsp; 工具结果 &nbsp;/&nbsp; 时间 &nbsp;/&nbsp; 负载与预算 &nbsp;——&nbsp; <b style="color:#0E2740">只报事实，不带判断</b></div>
+    </div>
+  </div>
+
+  <div class="card main" style="left:70px; top:180px; width:1070px; height:120px;">
+    <div class="pad">
+      <div class="t">L1　事件层</div>
+      <div class="d">把原始对话变成<b>带类型键、带区间、带守卫</b>的事实，而不是聊天记录</div>
+      <div style="margin-top:8px;"><span class="pill">类型化事件键</span><span class="pill">区间语义</span><span class="pill">9 条守卫</span><span class="pill">五条不变量</span></div>
+    </div>
+  </div>
+
+  <div class="card main" style="left:70px; top:340px; width:1070px; height:150px;">
+    <div class="pad">
+      <div class="t">L2　因果层</div>
+      <div class="d">一张<b>人类可编辑的边表</b>决定"该想起什么"；每条边挂一条真实记忆依据，跑过回归才准上线</div>
+      <div style="margin-top:8px;"><span class="pill">触发 any</span><span class="pill">排除 none</span><span class="pill">缺少 lacks</span><span class="pill">依据可回读</span><span class="pill">注入硬上限</span></div>
+    </div>
+  </div>
+
+  <div class="card main" style="left:70px; top:530px; width:1070px; height:100px;">
+    <div class="pad">
+      <div class="t">主模型</div>
+      <div class="d">对话 agent —— <b>不知道判定过程，也看不到情绪来路</b></div>
+    </div>
+  </div>
+
+  <div class="card main" style="left:70px; top:670px; width:1070px; height:150px;">
+    <div class="pad">
+      <div class="t">L3　人格层</div>
+      <div class="d">机制只能<b>提出提案</b>，人拍板才改宪法式基线；每次改动留备份、diff 与回滚</div>
+      <div style="margin-top:8px;"><span class="pill">提案 → 人拍板</span><span class="pill">不可编译部分原样注入</span><span class="pill">可编译部分量化</span></div>
+    </div>
+  </div>
+
+  <div class="side" style="left:1180px; top:180px; width:550px; height:640px;">
+    <div class="pad">
+      <div class="t" style="font-size:20px;">副核　四个可以各自死掉的核</div>
+      <div class="d" style="margin-top:6px;">主模型只收结论，收不到推导</div>
+    </div>
+
+    <div class="core" style="left:22px; top:104px; width:506px; height:112px; padding:14px 18px;">
+      <div class="ct"><span class="num">I</span>内感受</div>
+      <div class="cd">上下文占用、工具错误、延迟、预算 → 8 维"身体感"</div>
+    </div>
+    <div class="core" style="left:22px; top:232px; width:506px; height:112px; padding:14px 18px;">
+      <div class="ct"><span class="num">E</span>评价</div>
+      <div class="cd">"这件事对我意味着什么"——输出分布，不是点估计</div>
+    </div>
+    <div class="core" style="left:22px; top:360px; width:506px; height:112px; padding:14px 18px;">
+      <div class="ct"><span class="num">A</span>情绪</div>
+      <div class="cd">把评价积分成有惯性的状态（可微状态机）</div>
+    </div>
+    <div class="core" style="left:22px; top:488px; width:506px; height:112px; padding:14px 18px;">
+      <div class="ct"><span class="num">M</span>记忆偏置</div>
+      <div class="cd">这一轮先想起什么——只做偏置，有硬上界</div>
+    </div>
+  </div>
+
+  <div class="band" style="left:70px; top:880px; width:1660px; height:150px;">
+    <div class="pad">
+      <div class="t">证据闭环　—— 每一层都要能被外部证据推翻</div>
+      <div class="d" style="margin-top:8px;">
+        行为回归集 <b>798 条</b> &nbsp;·&nbsp; 命中流水 trace &nbsp;·&nbsp; 编辑台（左找右看，每条能改） &nbsp;·&nbsp; X 通道：全量数值只写日志，不进上下文
+      </div>
+      <div class="d" style="margin-top:6px;">每个判断 <b>可回放</b>　·　每次改动 <b>可回归</b>　·　每一步 <b>可回滚</b>　——　任何能被自报通过的指标，都不算指标</div>
+    </div>
+  </div>
+
+  <div class="tag" style="left:592px; top:492px;">推演要点 ≤ 80 字</div>
+  <div class="tag" style="left:592px; top:632px;">行为证据：纠正 / 肯定 / 叫停 / 返工</div>
+  <div class="tag" style="left:1472px; top:140px;">F 通道 · 只报事实</div>
+  <div class="tag" style="left:1090px; top:562px;">A 通道</div>
+
+</div>
+</body>
+</html>
