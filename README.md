@@ -2,7 +2,7 @@
 
 > **Event-Causal Persona Inversion** — 把"人格"从一句提示词，做成可测量、可回归、可回滚的工程对象。
 
-![架构总览：四层 ＋ 四个副核 ＋ 一条证据闭环](docs/architecture.png)
+![架构总览：四层 ＋ 四个副核 ＋ 一条证据闭环](architecture.png)
 
 | 项 | 内容 |
 |---|---|
